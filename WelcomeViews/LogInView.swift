@@ -9,11 +9,15 @@
 import SwiftUI
 
 struct LogInView: View {
+    
+    @State private var showDestinationLogIn = false
+    
     var body: some View {
+        
         VStack{
             HStack{
                 Button(action: {
-                    print("button!")
+                    print("No login Maybe sign Up")
                 }) {
                     HStack{
                         Image(systemName: "person.fill")
@@ -35,23 +39,37 @@ struct LogInView: View {
                
                 
                 
+                
+                
                 Button(action: {
-                                   print("button2")
+                    self.showDestinationLogIn.toggle()
+                                   print("Is logged")
                                }) {
                                    HStack{
                                        Image(systemName: "person.crop.circle.fill")
                                    Text("Log In")
                                    }
+                                
                                 .frame(width: 130, height: 30, alignment: .center)
                                 .foregroundColor(.white)
                                 
                                 .padding(10)
+                                .sheet(isPresented: $showDestinationLogIn) {
+                                DestinationView()
                                 //.border(Color.white, width: 1)
+                                
+                                
+                                                  //Navegación BT
+                                                  
+                                            //  if showDestinationLogIn {
+                                                  
+                                              //}
                                 
                                 
                                    
                                    
                                }
+                  
                     
                                 .overlay(
                                 RoundedRectangle(cornerRadius: 15)
@@ -64,8 +82,11 @@ struct LogInView: View {
     }
 }
 
+
+
 struct LogInView_Previews: PreviewProvider {
     static var previews: some View {
         LogInView()
     }
+}
 }
